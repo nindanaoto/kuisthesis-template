@@ -324,11 +324,11 @@ FUNCTION {format.editors}
       editor num.names$ #1 >
 	{ editor is.kanji
 		{"(編)" * } %%{", editors" * } if$
-                            {"(eds.)" *} if$
+                            {" (eds.)" *} if$
 	}
 	{ editor is.kanji
 		{"(編)" *}  %%{", editor" * } if$
-                            {"(ed.)" *} if$
+                            {" (ed.)" *} if$
 	}
       if$
     }
