@@ -1,4 +1,5 @@
 % Standard BibTeX-compatible variant for LuaLaTeX and pdfLaTeX.
+% kuisunsrt-bibtex.bst matsuoka@i.kyoto-u.ac.jp (Kotaro Matsuoka)
 % ipsjsort.bst nakasima@kuis.kyoto-u.ac.jp (Hiroshi Nakashima)
 % jssst.bst tomura@etl.go.jp (Satoru Tomura)
 % BibTeX standard bibliography style `jplain'
