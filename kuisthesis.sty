@@ -130,6 +130,30 @@
 \fi
 % 3.01(1)<<
 
+%% LuaLaTeX and pdfLaTeX use standard BibTeX, which does not provide
+%% pBibTeX's is.kanji.str$ function.  Transparently select the portable
+%% style variants while leaving the (u)pLaTeX bibliography path untouched.
+\def\kuis@use@standard@bibtex{%
+  \let\kuis@original@bibliographystyle\bibliographystyle
+  \def\kuis@sorted@bst{kuissort}%
+  \def\kuis@unsorted@bst{kuisunsrt}%
+  \def\bibliographystyle##1{%
+    \def\kuis@requested@bst{##1}%
+    \ifx\kuis@requested@bst\kuis@sorted@bst
+      \kuis@original@bibliographystyle{kuissort-bibtex}%
+    \else\ifx\kuis@requested@bst\kuis@unsorted@bst
+      \kuis@original@bibliographystyle{kuisunsrt-bibtex}%
+    \else
+      \kuis@original@bibliographystyle{##1}%
+    \fi\fi
+  }%
+}
+\ifLuaTeX
+  \kuis@use@standard@bibtex
+\else\ifpdfLaTeX
+  \kuis@use@standard@bibtex
+\fi\fi
+
 % 3.01(2)>>
 %% Define \zw (zenkaku width) fallback for pdfLaTeX
 %% In Japanese TeX, 1zw = width of one full-width character ≈ 1em
